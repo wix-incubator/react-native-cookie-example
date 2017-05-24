@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.CookieManager;
-import java.net.CookiePolicy;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -34,7 +33,7 @@ public class MainActivity extends Activity implements MainView.Listener {
 
 	private void requestWithLowLevelUrlConnection() {
 		if (CookieManager.getDefault() == null) {
-			CookieManager.setDefault(new CookieManager(null, CookiePolicy.ACCEPT_ALL));
+			CookieManager.setDefault(new CookieManager());
 		}
 
 		doRequestWithUrlConnection(new Callback<String>() {

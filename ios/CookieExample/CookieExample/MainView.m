@@ -12,7 +12,7 @@
     id _listener;
     SEL _selector;
     BOOL _measured;
-    UIProgressView* _progress;
+    UIActivityIndicatorView* _progress;
     UILabel* _firstLabel;
     UILabel* _secondLabel;
     UIButton* _clearCookiesBtn;
@@ -45,9 +45,11 @@
 }
 
 -(void)createProgress {
-    _progress = [[UIProgressView alloc] init];
+    _progress = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [_progress setBackgroundColor:[UIColor blueColor]];
     [self addSubview:_progress];
-    [_progress sizeToFit];
+    [_progress setFrame:CGRectMake(0, 0, 150, 150)];
+    [_progress startAnimating];
 }
 
 -(void)layoutSubviews {
@@ -58,6 +60,7 @@
         [_firstLabel setCenter:CGPointMake(centerX, 150)];
         [_secondLabel setCenter:CGPointMake(centerX, 200)];
         [_clearCookiesBtn setCenter:CGPointMake(centerX, 300)];
+        [_progress setCenter:CGPointMake(centerX, centerX)];
     }
 }
 
@@ -69,6 +72,7 @@
 -(void)setSecondLabel:(NSString *)secondLabel {
     [_secondLabel setText:secondLabel];
     [_secondLabel sizeToFit];
+    [_progress stopAnimating];
 }
 
 -(void)createClearCookiesBtn {

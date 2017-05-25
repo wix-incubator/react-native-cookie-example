@@ -45,8 +45,7 @@
 }
 
 -(void)createProgress {
-    _progress = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [_progress setBackgroundColor:[UIColor blueColor]];
+    _progress = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self addSubview:_progress];
     [_progress setFrame:CGRectMake(0, 0, 150, 150)];
     [_progress startAnimating];
@@ -60,7 +59,7 @@
         [_firstLabel setCenter:CGPointMake(centerX, 150)];
         [_secondLabel setCenter:CGPointMake(centerX, 200)];
         [_clearCookiesBtn setCenter:CGPointMake(centerX, 300)];
-        [_progress setCenter:CGPointMake(centerX, centerX)];
+        [_progress setCenter:CGPointMake(centerX, 250)];
     }
 }
 
@@ -76,9 +75,8 @@
 }
 
 -(void)createClearCookiesBtn {
-    _clearCookiesBtn = [[UIButton alloc] init];
+    _clearCookiesBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [_clearCookiesBtn setTitle:@"Clear All Cookies" forState:UIControlStateNormal];
-    [_clearCookiesBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [_clearCookiesBtn addTarget:_listener action:_selector forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_clearCookiesBtn];
     [_clearCookiesBtn sizeToFit];
